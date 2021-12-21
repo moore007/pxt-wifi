@@ -157,7 +157,7 @@ namespace ESP8266 {
        if (item.indexOf("WIFI CONNECTED", 0) != -1) {
            wificonnected();
        }
-       if (item.indexOf("WIFI DISCONNECTED", 0) != -1) {
+       if (item.indexOf("WIFI DISCONNECT", 0) != -1) {
            wifidisconnected();
        }
    })
