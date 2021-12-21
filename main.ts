@@ -143,7 +143,7 @@ namespace ESP8266 {
         return target.toString();
     }
 
-   // -------------- Cloud Services ----------------
+   // -------------- Event ----------------
    type EvtAct = () => void;
 
    let wificonnected: EvtAct = null;
