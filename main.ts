@@ -180,6 +180,7 @@ namespace ESP8266 {
            for (let i=0;i++;i<serial_msg.length) {
                if (serial_msg[i] == ",") {
                    cammaPos.push(i);
+                   basic.showNumber(i);
                }
            }
            let mqttTopic = serial_msg.substr(cammaPos[0] + 2, cammaPos[1] - 2);
