@@ -193,6 +193,7 @@ namespace ESP8266 {
     //% weight=10
     export function onWifiConnected(body: () => void) {
         wificonnected = body;
+        basic.pause(3000)
     }
 
     //% block="On WiFi disconnected"
