@@ -193,7 +193,6 @@ namespace ESP8266 {
     //% weight=10
     export function onWifiConnected(body: () => void) {
         wificonnected = body;
-        basic.pause(3000)
     }
 
     //% block="On WiFi disconnected"
@@ -241,6 +240,8 @@ namespace ESP8266 {
     //% blockExternalInputs=true
     //% subcategory=MQTT
     export function setMQTT(server: string, port: number, id: string, user: string, password: string): void {
+        basic.pause(5000);
+        
         mqttServerIP = server;
         mqttServerPort = port;
 
