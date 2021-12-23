@@ -18,6 +18,8 @@ namespace ESP8266 {
     //% weight=82
     export function initializeWifi(tx: SerialPin, rx: SerialPin, baudrate: BaudRate): void {
         serial.redirect(tx, rx, baudrate);
+        serial.writeString("AT+RST\r\n");
+        basic.pause(1000);
     }
 
     // -------------- WiFi ----------------
@@ -28,8 +30,6 @@ namespace ESP8266 {
     //% block="Set WiFi to ssid %ssid| pwd %pwd"
     //% weight=81
     export function setWifi(ssid: string, pwd: string): void {
-        serial.writeString("AT+RST\r\n");
-        basic.pause(500);
         serial.writeString("AT+CWMODE=1\r\n");
         basic.pause(500);
         serial.writeString("AT+CWJAP=\"" + ssid + "\",\"" + pwd + "\"\r\n");
@@ -148,30 +148,112 @@ namespace ESP8266 {
 
    let wificonnected: EvtAct = null;
    let wifidisconnected: EvtAct = null;
+   let mqttconnected: EvtAct = null;
+   let mqttdisconncted: EvtAct = null;
+
+   let actSuccess = false;
 
    serial.onDataReceived("\n", function () {
        let msg_str = serial.readString();
        let msg_size = msg_str.length;
-       let item: string = msg_str + "";
+       let serial_msg: string = msg_str + "";
 
-       if (item.indexOf("WIFI CONNECTED", 0) != -1) {
+       if (serial_msg.indexOf("WIFI CONNECTED", 0) != -1) {
            wificonnected();
        }
-       if (item.indexOf("WIFI DISCONNECT", 0) != -1) {
+       if (serial_msg.indexOf("WIFI DISCONNECT", 0) != -1) {
            wifidisconnected();
+       }
+       if (serial_msg.indexOf("MQTTCONNECTED", 0) != -1) {
+           mqttconnected();
+       }
+       if (serial_msg.indexOf("MQTTDISCONNECTED", 0) != -1) {
+           mqttdisconncted();
+       }
+       if (serial_msg.indexOf("OK", 0) != -1) {
+           actSuccess = true;
        }
    })
 
     //% block="On WiFi connected"
     //% subcategory=Event
+    //% weight=10
     export function onWifiConnected(body: () => void) {
         wificonnected = body;
     }
 
     //% block="On WiFi disconnected"
     //% subcategory=Event
+    //% weight=11
     export function onWifiDisconnected(body: () => void) {
         wifidisconnected = body;
     }
 
+    //% block="MQTT server disconnected"
+    //% subcategory=Event
+    //% weight=12
+    export function onMQTTConnected(body: () => void) {
+        mqttconnected = body;
+    }
+
+    //% block="MQTT server disconnected"
+    //% subcategory=Event
+    //% weight=13
+    export function onMQTTDisonnected(body: () => void) {
+        mqttdisconncted = body;
+    }
+
+    // -------------- MQTT ----------------
+    
+    let mqttClientID = "";
+    let mqttClientName = "";
+    let mqttClientPWD = "";
+
+    let mqttServerIP = "";
+    let mqttServerPort = 1883;
+
+    function mqttCongif(): void {
+        serial.writeString("AT+MQTTCLEAN=0\r\n");
+        basic.pause(500);
+        serial.writeString("AT+MQTTUSERCFG=0,1,\"" + mqttClientID + "\",\"" + mqttClientName + "\",\"" + mqttClientPWD + "\",0,0,\"\"\r\n");
+        basic.pause(500);
+    }
+    function mqttConServer(): void{
+        serial.writeString("AT+MQTTCONN=0,\"" + mqttServerIP + "\"," + mqttServerPort + ",0\r\n");
+        basic.pause(5000);
+    }
+
+    //% block="Setting MQTT server %server|Port %port|ID %id|Username %user|Password %password"
+    //% blockExternalInputs=true
+    //% subcategory=MQTT
+    export function setMQTT(server: string, port: number, id: string, user: string, password: string): void {
+        mqttServerIP = server;
+        mqttServerPort = port;
+
+        mqttClientID = id;
+        mqttClientName = user;
+        mqttClientPWD = password;
+
+        mqttCongif();
+    }
+
+    //% block="Connect MQTT server"
+    //% subcategory=MQTT
+    export function connectmqtt(): void {
+        mqttConServer();
+    }
+
+    //% block="Subscribe MQTT topic %topic|QoS %qos"
+    //% qos.defl=1 qos.min=0 qos.max=2
+    //% subcategory=MQTT
+    export function mqttsub(topic: string, qos: number): void {
+        serial.writeString("AT+MQTTSUB=0,\"" + topic + "\"," + qos + "\r\n");
+    }
+
+    //% block="Publish message to topic %topic|msg %qos"
+    //% subcategory=MQTT
+    export function mqttpub(topic: string, msg: string): void {
+        serial.writeString("AT+MQTTPUB=0,\"" + topic + "\",\"" + msg + "\",1,0\r\n");
+        basic.pause(500);
+    }
 }
