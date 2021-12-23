@@ -176,10 +176,14 @@ namespace ESP8266 {
            actSuccess = true;
        }
        if (serial_msg.indexOf("+MQTTSUBRECV:", 0) != -1) {
-           let offset = serial_msg.indexOf(",");
-           basic.showNumber(offset); //debug
-           let mqttTopic = serial_msg.substr(13, (offset - 13));
-           let mqttMessage = serial_msg.substr(offset + 1, (msg_size - offset -1));
+           let cammaPos = [];
+           for (let i=0;i++;i<serial_msg.length) {
+               if (serial_msg[i] == ",") {
+                   cammaPos.push(i);
+               }
+           }
+           let mqttTopic = serial_msg.substr(cammaPos[0] + 2, cammaPos[1] - 2);
+           let mqttMessage = serial_msg.substr(cammaPos[2] + 1, serial_msg.length);
            mqttmsg(mqttTopic, mqttMessage);
        }
    })
