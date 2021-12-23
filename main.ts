@@ -177,6 +177,7 @@ namespace ESP8266 {
        }
        if (serial_msg.indexOf("+MQTTSUBRECV:", 0) != -1) {
            let offset = serial_msg.indexOf(",");
+           basic.showNumber(offset); //debug
            let mqttTopic = serial_msg.substr(13, (offset - 13));
            let mqttMessage = serial_msg.substr(offset + 1, (msg_size - offset -1));
            mqttmsg(mqttTopic, mqttMessage);
