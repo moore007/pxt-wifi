@@ -189,7 +189,7 @@ namespace ESP8266 {
         wifidisconnected = body;
     }
 
-    //% block="MQTT server disconnected"
+    //% block="MQTT server connected"
     //% subcategory=Event
     //% weight=12
     export function onMQTTConnected(body: () => void) {
@@ -216,7 +216,7 @@ namespace ESP8266 {
         serial.writeString("AT+MQTTCLEAN=0\r\n");
         basic.pause(500);
         serial.writeString("AT+MQTTUSERCFG=0,1,\"" + mqttClientID + "\",\"" + mqttClientName + "\",\"" + mqttClientPWD + "\",0,0,\"\"\r\n");
-        basic.pause(500);
+        basic.pause(1000);
     }
     function mqttConServer(): void{
         serial.writeString("AT+MQTTCONN=0,\"" + mqttServerIP + "\"," + mqttServerPort + ",0\r\n");
