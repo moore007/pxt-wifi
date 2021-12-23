@@ -145,11 +145,13 @@ namespace ESP8266 {
 
    // -------------- Event ----------------
    type EvtAct = () => void;
+   type EvtMsg = (topic: string, data: string) => void;
 
    let wificonnected: EvtAct = null;
    let wifidisconnected: EvtAct = null;
    let mqttconnected: EvtAct = null;
    let mqttdisconncted: EvtAct = null;
+   let mqttmsg: EvtMsg = null;
 
    let actSuccess = false;
 
@@ -164,14 +166,20 @@ namespace ESP8266 {
        if (serial_msg.indexOf("WIFI DISCONNECT", 0) != -1) {
            wifidisconnected();
        }
-       if (serial_msg.indexOf("MQTTCONNECTED", 0) != -1) {
+       if (serial_msg.indexOf("+MQTTCONNECTED", 0) != -1) {
            mqttconnected();
        }
-       if (serial_msg.indexOf("MQTTDISCONNECTED", 0) != -1) {
+       if (serial_msg.indexOf("+MQTTDISCONNECTED", 0) != -1) {
            mqttdisconncted();
        }
        if (serial_msg.indexOf("OK", 0) != -1) {
            actSuccess = true;
+       }
+       if (serial_msg.indexOf("+MQTTSUBRECV:", 0) != -1) {
+           let offset = serial_msg.indexOf(",");
+           let mqttTopic = serial_msg.substr(13, (offset - 13));
+           let mqttMessage = serial_msg.substr(offset + 1, (msg_size - offset -1));
+           mqttmsg(mqttTopic, mqttMessage);
        }
    })
 
@@ -255,5 +263,11 @@ namespace ESP8266 {
     export function mqttpub(topic: string, msg: string): void {
         serial.writeString("AT+MQTTPUB=0,\"" + topic + "\",\"" + msg + "\",1,0\r\n");
         basic.pause(500);
+    }
+
+    //% block="On MQTT received"
+    //% draggableParameters
+    export function onMQTTReceived(body: (topic: string, receivedMessage: string) => void): void {
+        mqttmsg = body;
     }
 }
