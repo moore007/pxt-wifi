@@ -182,8 +182,8 @@ namespace ESP8266 {
                    cammaPos.push(i);
                }
            }
-           let mqttTopic = serial_msg.substr(cammaPos[0] + 2, cammaPos[1] - cammaPos[0] -3);
-           let mqttMessage = serial_msg.substr(cammaPos[2] + 1, serial_msg.length - cammaPos[2] - 1);
+           let mqttTopic = serial_msg.substr(cammaPos[0] + 2, cammaPos[1] - cammaPos[0] - 3);
+           let mqttMessage = serial_msg.substr(cammaPos[2] + 1, serial_msg.length - cammaPos[2] - 3);
            mqttmsg(mqttTopic, mqttMessage);
        }
    })
