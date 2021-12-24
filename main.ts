@@ -161,19 +161,19 @@ namespace ESP8266 {
        let serial_msg: string = msg_str + "";
 
        if (serial_msg.indexOf("WIFI CONNECTED", 0) != -1) {
-           wificonnected();
+           if (wificonnected) wificonnected();
        }
        if (serial_msg.indexOf("WIFI DISCONNECT", 0) != -1) {
-           wifidisconnected();
+           if (wifidisconnected) wifidisconnected();
        }
        if (serial_msg.indexOf("+MQTTCONNECTED", 0) != -1) {
-           mqttconnected();
+           if (mqttconnected) mqttconnected();
        }
        if (serial_msg.indexOf("+MQTTDISCONNECTED", 0) != -1) {
-           mqttdisconncted();
+           if (mqttdisconncted) mqttdisconncted();
        }
        if (serial_msg.indexOf("OK", 0) != -1) {
-           actSuccess = true;
+           if (actSuccess) actSuccess = true;
        }
        if (serial_msg.indexOf("+MQTTSUBRECV:", 0) != -1) {
            let cammaPos = [];
@@ -184,7 +184,7 @@ namespace ESP8266 {
            }
            let mqttTopic = serial_msg.substr(cammaPos[0] + 2, cammaPos[1] - cammaPos[0] - 3);
            let mqttMessage = serial_msg.substr(cammaPos[2] + 1, serial_msg.length - cammaPos[2] - 3);
-           mqttmsg(mqttTopic, mqttMessage);
+           if (mqttmsg) mqttmsg(mqttTopic, mqttMessage);
        }
    })
 
