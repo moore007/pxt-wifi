@@ -248,13 +248,12 @@ namespace ESP8266 {
         mqttClientID = id;
         mqttClientName = user;
         mqttClientPWD = password;
-
-        mqttCongif();
     }
 
     //% block="Connect MQTT server"
     //% subcategory=MQTT
     export function connectmqtt(): void {
+        mqttCongif();
         mqttConServer();
     }
 
