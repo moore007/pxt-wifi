@@ -190,28 +190,28 @@ namespace ESP8266 {
 
     //% block="On WiFi connected"
     //% subcategory=Event
-    //% weight=10
+    //% weight=13
     export function onWifiConnected(body: () => void) {
         wificonnected = body;
     }
 
     //% block="On WiFi disconnected"
     //% subcategory=Event
-    //% weight=11
+    //% weight=12
     export function onWifiDisconnected(body: () => void) {
         wifidisconnected = body;
     }
 
     //% block="MQTT server connected"
     //% subcategory=Event
-    //% weight=12
+    //% weight=11
     export function onMQTTConnected(body: () => void) {
         mqttconnected = body;
     }
 
     //% block="MQTT server disconnected"
     //% subcategory=Event
-    //% weight=13
+    //% weight=10
     export function onMQTTDisonnected(body: () => void) {
         mqttdisconncted = body;
     }
