@@ -261,12 +261,15 @@ namespace ESP8266 {
     //% qos.defl=1 qos.min=0 qos.max=2
     //% subcategory=MQTT
     export function mqttsub(topic: string, qos: number): void {
+        basic.pause(1000);
         serial.writeString("AT+MQTTSUB=0,\"" + topic + "\"," + qos + "\r\n");
+        basic.pause(500);
     }
 
     //% block="Publish message to topic %topic|msg %qos"
     //% subcategory=MQTT
     export function mqttpub(topic: string, msg: string): void {
+        basic.pause(1000);
         serial.writeString("AT+MQTTPUB=0,\"" + topic + "\",\"" + msg + "\",1,0\r\n");
         basic.pause(500);
     }
