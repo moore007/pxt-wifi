@@ -239,6 +239,7 @@ namespace ESP8266 {
     //% block="Setting MQTT server %server|Port %port|ID %id|Username %user|Password %password"
     //% blockExternalInputs=true
     //% subcategory=MQTT
+    //% weight=24
     export function setMQTT(server: string, port: number, id: string, user: string, password: string): void {
         basic.pause(5000);
         
@@ -252,6 +253,7 @@ namespace ESP8266 {
 
     //% block="Connect MQTT server"
     //% subcategory=MQTT
+    //% weight=23
     export function connectmqtt(): void {
         mqttCongif();
         mqttConServer();
@@ -260,6 +262,7 @@ namespace ESP8266 {
     //% block="Subscribe MQTT topic %topic|QoS %qos"
     //% qos.defl=1 qos.min=0 qos.max=2
     //% subcategory=MQTT
+    //% weight=22
     export function mqttsub(topic: string, qos: number): void {
         basic.pause(1000);
         serial.writeString("AT+MQTTSUB=0,\"" + topic + "\"," + qos + "\r\n");
@@ -268,6 +271,7 @@ namespace ESP8266 {
 
     //% block="Publish message to topic %topic|msg %qos"
     //% subcategory=MQTT
+    //% weight=21
     export function mqttpub(topic: string, msg: string): void {
         basic.pause(1000);
         serial.writeString("AT+MQTTPUB=0,\"" + topic + "\",\"" + msg + "\",1,0\r\n");
@@ -277,6 +281,7 @@ namespace ESP8266 {
     //% block="On MQTT received"
     //% draggableParameters
     //% subcategory=MQTT
+    //% weight=20
     export function onMQTTReceived(body: (topic: string, receivedMessage: string) => void): void {
         mqttmsg = body;
     }
