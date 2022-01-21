@@ -8,7 +8,7 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/doralc/pxt-wifi** and import
+* search for **https://github.com/BLstem/pxt-wifi** and import
 
 ## Edit this project ![Build status badge](https://github.com/doralc/pxt-wifi/workflows/MakeCode/badge.svg)
 
@@ -16,7 +16,7 @@ To edit this repository in MakeCode.
 
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/doralc/pxt-wifi** and click import
+* paste **https://github.com/BLstem/pxt-wifi** and click import
 
 ## Blocks preview
 
