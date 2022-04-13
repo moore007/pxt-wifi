@@ -143,19 +143,19 @@ namespace ESP8266 {
         return target.toString();
     }
 
-   // -------------- Event ----------------
-   type EvtAct = () => void;
-   type EvtMsg = (topic: string, data: string) => void;
+    // -------------- Event ----------------
+    type EvtAct = () => void;
+    type EvtMsg = (topic: string, data: string) => void;
 
-   let wificonnected: EvtAct = null;
-   let wifidisconnected: EvtAct = null;
-   let mqttconnected: EvtAct = null;
-   let mqttdisconncted: EvtAct = null;
-   let mqttmsg: EvtMsg = null;
+    let wificonnected: EvtAct = null;
+    let wifidisconnected: EvtAct = null;
+    let mqttconnected: EvtAct = null;
+    let mqttdisconncted: EvtAct = null;
+    let mqttmsg: EvtMsg = null;
 
-   let actSuccess = false;
+    let actSuccess = false;
 
-   serial.onDataReceived("\n", function () {
+    serial.onDataReceived("\n", function () {
        let msg_str = serial.readString();
        let msg_size = msg_str.length;
        let serial_msg: string = msg_str + "";
@@ -186,7 +186,7 @@ namespace ESP8266 {
            let mqttMessage = serial_msg.substr(cammaPos[2] + 1, serial_msg.length - cammaPos[2] - 3);
            if (mqttmsg) mqttmsg(mqttTopic, mqttMessage);
        }
-   })
+    })
 
     //% block="On WiFi connected"
     //% subcategory=Event
