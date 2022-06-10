@@ -19,7 +19,7 @@ namespace ESP8266 {
     export function initializeWifi(tx: SerialPin, rx: SerialPin, baudrate: BaudRate): void {
         serial.redirect(tx, rx, baudrate);
         serial.writeString("AT+RST\r\n");
-        basic.pause(1000);
+        basic.pause(3000);
     }
 
     // -------------- WiFi ----------------
