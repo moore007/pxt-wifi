@@ -56,6 +56,7 @@ namespace ESP8266 {
         serial.writeString(message);
         basic.pause(1000);
         serial.writeString("AT+CIPCLOSE\r\n");
+        basic.pause(1000);
     }
 
     /**
@@ -84,6 +85,7 @@ namespace ESP8266 {
         serial.writeString(message2);
         basic.pause(3000);
         serial.writeString("AT+CIPCLOSE\r\n");
+        basic.pause(1000);
     }
 
     /**
@@ -105,6 +107,7 @@ namespace ESP8266 {
         serial.writeString(message3);
         basic.pause(1000);
         serial.writeString("AT+CIPCLOSE\r\n");
+        basic.pause(1000);
     }
 
     /**
@@ -133,6 +136,7 @@ namespace ESP8266 {
         serial.writeString(message4);
         basic.pause(3000);
         serial.writeString("AT+CIPCLOSE\r\n");
+        basic.pause(1000);
     }
 
     /** Convert a number to a string. */
