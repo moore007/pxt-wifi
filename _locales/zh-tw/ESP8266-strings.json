@@ -6,7 +6,7 @@
     "ESP8266.sendIFTTT|block": "發送IFTTT訊息至密鑰 %key|事件名稱 %eventname|值 %value",
     "ESP8266.sendIFTTTwithArray|block": "發送IFTTT訊息至密鑰 %key|事件名稱 %eventname|陣列 %value",
     "ESP8266.make_string|block": "數字 %target| 轉換成文字 ",
-    "ESP8266.onWifiConnecte|block": "當WiFi連線",
+    "ESP8266.onWifiConnected|block": "當WiFi連線",
     "ESP8266.onWifiDisconnected|block": "當WiFi離線",
     "ESP8266.onMQTTConnected|block": "當MQTT伺服器連線",
     "ESP8266.onMQTTDisonnected|block": "當MQTT伺服器離線",
