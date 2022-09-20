@@ -11,6 +11,7 @@
         "README.md",
         "main.blocks",
         "main.ts",
+        "_locales/ESP8266-strings.json",
         "_locales/zh-tw/ESP8266-strings.json"
     ],
     "testFiles": [
