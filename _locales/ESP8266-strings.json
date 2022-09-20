@@ -1,0 +1,22 @@
+{
+    "ESP8266.initializeWifi|block":"Initialize WiFi TX %tx|RX %rx|Baud rate %baudrate",
+    "ESP8266.setWifi|block": "Set WiFi to ssid %ssid| pwd %pwd",
+    "ESP8266.sendThingspeak|block": "Send ThingSpeak key %key| field1 %field1",
+    "ESP8266.sendThingspeakwithArray|block": "Send ThingSpeak key %key| array %fields" ,
+    "ESP8266.sendIFTTT|block": "Send IFTTT key %key|event_name %eventname|value %value",
+    "ESP8266.sendIFTTTwithArray|block": "Send IFTTT key %key|event_name %eventname|array %values",
+    "ESP8266.make_string|block": "number to string %target",
+    "ESP8266.onWifiConnected|block": "On WiFi connected",
+    "ESP8266.onWifiDisconnected|block": "On WiFi disconnected",
+    "ESP8266.onMQTTConnected|block": "MQTT server connected",
+    "ESP8266.onMQTTDisonnected|block": "MQTT server disconnected",
+    "ESP8266.setMQTT|block": "Setting MQTT server %server|Port %port|ID %id|Username %user|Password %password",
+    "ESP8266.connectmqtt|block": "Connect MQTT server",
+    "ESP8266.mqttsub|block": "Subscribe MQTT topic %topic|QoS %qos",
+    "ESP8266.mqttpub|block": "Publish message to topic %topic|msg %qos",
+    "ESP8266.onMQTTReceived|block": "On MQTT received",
+    "{id:category}ESP8266":"IoT",
+    "{id:subcategory}Cloud":"Cloud",
+    "{id:subcategory}Event":"Event",
+    "{id:subcategory}MQTT":"MQTT"
+}
