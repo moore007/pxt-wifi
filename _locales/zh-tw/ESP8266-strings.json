@@ -1,9 +1,0 @@
-{
-    "ESP8266.esp8266_initialize_wifi|block":"設定 WiFi TX %tx|RX %rx|傳輸速率 %baudrate",
-    "ESP8266.esp8266_set_wifi|block": "設定 WiFi 至 ssid %ssid| 密碼 %pwd",
-    "ESP8266.esp8266_set_thingspeak|block": "發送ThingSpeak訊息至密鑰 %key| 欄位1 %field1",
-    "ESP8266.esp8266_set_thingspeak_list|block": "發送ThingSpeak訊息至密鑰 %key| 陣列 %fields" ,
-    "ESP8266.esp8266_set_ifttt|block": "發送IFTTT訊息至密鑰 %key| 事件名稱 %eventname| 值 %value",
-    "ESP8266.esp8266_set_ifttt_list|block": "發送IFTTT訊息至密鑰 %key| 事件名稱 %eventname| 陣列 %value",
-    "ESP8266.make_string|block": "數字 %target| 轉換成文字 "
-}
