@@ -14,5 +14,5 @@
     "ESP8266.connectmqtt|block": "連接MQTT伺服器",
     "ESP8266.mqttsub|block": "訂閱MQTT主題 %topic|QoS %qos",
     "ESP8266.mqttpub|block": "發佈至主題 %topic|訊息 %qos",
-    "ESP8266.onMQTTReceived|block": "當MQTT收到訊息",
+    "ESP8266.onMQTTReceived|block": "當MQTT收到訊息"
 }
