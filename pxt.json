@@ -10,7 +10,8 @@
     "files": [
         "README.md",
         "main.blocks",
-        "main.ts"
+        "main.ts",
+        "_locales/zh-tw/ESP8266-strings.json"
     ],
     "testFiles": [
         "test.ts"
