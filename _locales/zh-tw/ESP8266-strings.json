@@ -15,7 +15,7 @@
     "ESP8266.mqttsub|block": "訂閱MQTT主題 %topic|QoS %qos",
     "ESP8266.mqttpub|block": "發佈至主題 %topic|訊息 %qos",
     "ESP8266.onMQTTReceived|block": "當MQTT收到訊息",
-    "{id:category}IoT":"IoT",
+    "{id:category}ESP8266":"IoT",
     "{id:subcategory}Cloud":"Cloud",
     "{id:subcategory}Event":"Event",
     "{id:subcategory}MQTT":"MQTT"
