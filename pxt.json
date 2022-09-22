@@ -1,5 +1,5 @@
 {
-    "name": "pxt-wifi",
+    "name": "ESP8266",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
