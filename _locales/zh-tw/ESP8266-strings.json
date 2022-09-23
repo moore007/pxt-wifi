@@ -1,0 +1,22 @@
+{
+    "ESP8266.initializeWifi|block": "設定WiFi TX %tx|RX %rx|傳輸速率 %baudrate",
+    "ESP8266.setWifi|block": "設定WiFi連線至 ssid %ssid| 密碼 %pwd",
+    "ESP8266.sendThingspeak|block": "發送ThingSpeak訊息 密鑰 %key| 欄位1 %field1",
+    "ESP8266.sendThingspeakwithArray|block": "發送ThingSpeak訊息 密鑰 %key| 陣列 %fields" ,
+    "ESP8266.sendIFTTT|block": "發送IFTTT訊息 密鑰 %key|事件名稱 %eventname| 值 %value",
+    "ESP8266.sendIFTTTwithArray|block": "發送IFTTT訊息 密鑰 %key|事件名稱 %eventname| 陣列 %value",
+    "ESP8266.make_string|block": "數字 %target| 轉換成文字",
+    "ESP8266.onWifiConnected|block": "當WiFi連線時",
+    "ESP8266.onWifiDisconnected|block": "當WiFi離線時",
+    "ESP8266.onMQTTConnected|block": "當連接MQTT伺服器時",
+    "ESP8266.onMQTTDisonnected|block": "當斷開MQTT伺服器連接時",
+    "ESP8266.setMQTT|block": "設定MQTT伺服器 %server|通訊埠 %port|ID %id|用戶名稱 %user|密碼 %password",
+    "ESP8266.connectmqtt|block": "連接MQTT伺服器",
+    "ESP8266.mqttsub|block": "訂閱MQTT主題 %topic|QoS %qos",
+    "ESP8266.mqttpub|block": "發佈至主題 %topic|訊息 %qos",
+    "ESP8266.onMQTTReceived|block": "當MQTT收到訊息時",
+    "{id:category}ESP8266":"IoT",
+    "{id:subcategory}Cloud":"Cloud",
+    "{id:subcategory}Event":"Event",
+    "{id:subcategory}MQTT":"MQTT"
+}
