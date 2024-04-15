@@ -91,7 +91,7 @@ namespace ESP8266 {
     /**
      * Send data to MAKE.
      */
-    //% block="Send MAKE like %like|key %data"
+    //% block="Send MAKE key %key|data %data"
     //% text.shadowOptions.toString=true
     //% subcategory=Cloud
     //% weight=1
