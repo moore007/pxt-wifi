@@ -95,15 +95,15 @@ namespace ESP8266 {
     //% text.shadowOptions.toString=true
     //% subcategory=Cloud
     //% weight=1
-    export function sendMake(link: string, key: string): void {
-        key += "?cell="
+    export function sendMake(key: string, data: string): void {
+        data = "?cell=" + data
         serial.writeString("AT+CIPMUX=0\r\n");
         basic.pause(500)
         serial.writeString("AT+CIPSTART=\"TCP\",\"hook.eu2.make.com\",80\r\n");
         basic.pause(1000);
-        serial.writeString("AT+CIPSEND=" + key.length + "\r\n");
+        serial.writeString("AT+CIPSEND=" + (key + data).length + "\r\n");
         basic.pause(500);
-        serial.writeString(key);
+        serial.writeString(key + data);
         basic.pause(1000);
         serial.writeString("AT+CIPCLOSE\r\n");
         basic.pause(1000);
