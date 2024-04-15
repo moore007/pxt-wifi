@@ -96,10 +96,10 @@ namespace ESP8266 {
     //% subcategory=Cloud
     //% weight=1
     export function sendMake(key: string, data: string): void {
-        let message3 = "GET /trigger/" + key + "?cell=" + data + " HTTP/1.1\r\nHost: eu2.make.com\r\nConnection: close\r\n\r\n";
+        let message3 = "GET /" + key + "?cell=" + data + " HTTP/1.1\r\nHost: eu2.make.com\r\nConnection: close\r\n\r\n";
         serial.writeString("AT+CIPMUX=0\r\n");
         basic.pause(500)
-        serial.writeString("AT+CIPSTART=\"TCP\",\"maker.ifttt.com\",80\r\n");
+        serial.writeString("AT+CIPSTART=\"TCP\",\"eu2.make.com\",80\r\n");
         basic.pause(1000);
         serial.writeString("AT+CIPSEND=" + message3.length + "\r\n");
         basic.pause(500);
