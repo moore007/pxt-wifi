@@ -89,6 +89,26 @@ namespace ESP8266 {
     }
 
     /**
+     * Send data to MAKE.
+     */
+    //% block="Send MAKE like %like|data %data"
+    //% text.shadowOptions.toString=true
+    //% subcategory=Cloud
+    //% weight=1
+    export function sendMake(link: string, data: string): void {
+        serial.writeString("AT+CIPMUX=0\r\n");
+        basic.pause(500)
+        serial.writeString("AT+CIPSTART=\"TCP\",\"maker.ifttt.com\",80\r\n");
+        basic.pause(1000);
+        serial.writeString("AT+CIPSEND=" + link.length + "\r\n");
+        basic.pause(500);
+        serial.writeString(link);
+        basic.pause(1000);
+        serial.writeString("AT+CIPCLOSE\r\n");
+        basic.pause(1000);
+    }
+
+    /**
      * Send single data to IFTTT Event Trigger.
     */
     //% blockId=esp8266_set_ifttt
