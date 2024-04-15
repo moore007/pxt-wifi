@@ -91,18 +91,19 @@ namespace ESP8266 {
     /**
      * Send data to MAKE.
      */
-    //% block="Send MAKE like %like|data %data"
+    //% block="Send MAKE like %like|key %data"
     //% text.shadowOptions.toString=true
     //% subcategory=Cloud
     //% weight=1
-    export function sendMake(link: string, data: string): void {
+    export function sendMake(link: string, key: string): void {
+        key += "?cell="
         serial.writeString("AT+CIPMUX=0\r\n");
         basic.pause(500)
-        serial.writeString("AT+CIPSTART=\"TCP\",\"maker.ifttt.com\",80\r\n");
+        serial.writeString("AT+CIPSTART=\"TCP\",\"hook.eu2.make.com\",80\r\n");
         basic.pause(1000);
-        serial.writeString("AT+CIPSEND=" + link.length + "\r\n");
+        serial.writeString("AT+CIPSEND=" + key.length + "\r\n");
         basic.pause(500);
-        serial.writeString(link);
+        serial.writeString(key);
         basic.pause(1000);
         serial.writeString("AT+CIPCLOSE\r\n");
         basic.pause(1000);
