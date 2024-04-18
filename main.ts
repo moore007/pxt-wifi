@@ -97,7 +97,7 @@ namespace ESP8266 {
     //% weight=1
     export function sendMake(uuid: string, data: string): void {
         let msg = "2,0," + "\"https://hook.eu2.make.com/" + uuid + "?cell=" + data + "\"" +
-        ",\"\",\"/get\",1"
+        ",\"\",\"/get\",1\r\n"
         basic.pause(500)
         serial.writeString("AT+HTTPCLIENT=" + msg)
         basic.pause(5000)
