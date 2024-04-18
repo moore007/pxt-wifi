@@ -91,22 +91,16 @@ namespace ESP8266 {
     /**
      * Send data to MAKE.
      */
-    //% block="Send MAKE key %key|data %data"
+    //% block="Send MAKE UUID %uuid|data %data"
     //% text.shadowOptions.toString=true
     //% subcategory=Cloud
     //% weight=1
-    export function sendMake(key: string, data: string): void {
-        let message3 = "GET /" + key + "?cell=" + data + " HTTP/1.1\r\nHost: eu2.make.com\r\nConnection: close\r\n\r\n";
-        serial.writeString("AT+CIPMUX=0\r\n");
+    export function sendMake(uuid: string, data: string): void {
+        let msg = "2,0," + "\"https://hook.eu2.make.com/" + uuid + "?cell=" + data + "\"" +
+        ",\"\",\"/get\",1"
         basic.pause(500)
-        serial.writeString("AT+CIPSTART=\"TCP\",\"eu2.make.com\",80\r\n");
-        basic.pause(1000);
-        serial.writeString("AT+CIPSEND=" + message3.length + "\r\n");
-        basic.pause(500);
-        serial.writeString(message3);
-        basic.pause(1000);
-        serial.writeString("AT+CIPCLOSE\r\n");
-        basic.pause(1000);
+        serial.writeString("AT+HTTPCLIENT=" + msg)
+        basic.pause(5000)
     }
 
     /**
