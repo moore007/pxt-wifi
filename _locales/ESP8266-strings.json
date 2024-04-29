@@ -5,6 +5,7 @@
     "ESP8266.sendThingspeakwithArray|block": "Send ThingSpeak key %key| array %fields" ,
     "ESP8266.sendIFTTT|block": "Send IFTTT key %key|event_name %eventname|value %value",
     "ESP8266.sendIFTTTwithArray|block": "Send IFTTT key %key|event_name %eventname|array %values",
+    "ESP8266.sendMake|block": "Send MAKE UUID %uuid|data %data",
     "ESP8266.make_string|block": "number to string %target",
     "ESP8266.onWifiConnected|block": "On WiFi connected",
     "ESP8266.onWifiDisconnected|block": "On WiFi disconnected",
